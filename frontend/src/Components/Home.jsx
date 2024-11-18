@@ -17,7 +17,7 @@ const Home = () => {
         <div className="contentt">
             <Link to={'/profile'}>
                 <div className="imgg">
-                    {/* <img src="${employ.profile}" alt="${employ.name}"/> */}
+                    <img src="" alt=""/>
                 </div>
                 <div className="detailss">
                     <h2>Name</h2>
@@ -28,7 +28,7 @@ const Home = () => {
         <div className="contentt">
             <Link to={'/profile'}>
                 <div className="imgg">
-                    {/* <img src="${employ.profile}" alt="${employ.name}"/> */}
+                    <img src="" alt=""/>
                 </div>
                 <div className="detailss">
                     <h2>Name</h2>
@@ -39,7 +39,7 @@ const Home = () => {
         <div className="contentt">
             <Link to={'/profile'}>
                 <div className="imgg">
-                    {/* <img src="${employ.profile}" alt="${employ.name}"/> */}
+                    <img src="" alt=""/>
                 </div>
                 <div className="detailss">
                     <h2>Name</h2>
@@ -50,7 +50,7 @@ const Home = () => {
         <div className="contentt">
             <Link to={'/profile'}>
                 <div className="imgg">
-                    {/* <img src="${employ.profile}" alt="${employ.name}"/> */}
+                    <img src="" alt=""/>
                 </div>
                 <div className="detailss">
                     <h2>Name</h2>

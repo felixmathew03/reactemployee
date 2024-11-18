@@ -7,7 +7,7 @@ const Profile = () => {
     <div className="contentss" >
         <div className="content">
             <div className="img">
-                <img src="" alt=""/>
+                <img src="../img/pp.avif" alt=""/>
             </div>
             <div className="details">
                 <table className="table">
@@ -19,6 +19,10 @@ const Profile = () => {
                     <tr>
                         <th>Emp-Name</th>
                         <td>name</td>
+                    </tr>
+                    <tr>
+                        <th>DOB</th>
+                        <td>dob</td>
                     </tr>
                     <tr>
                         <th>Salary</th>
@@ -33,16 +37,22 @@ const Profile = () => {
                         <td>designation</td>
                     </tr>
                     <tr>
-                        <th rowSpan="2">Contact</th>
-                        <td>phone</td>
-                    </tr>
-                    <tr>
+                        <th >Email</th>
                         <td>email</td>
                     </tr>
                     <tr>
-                        <td className="actions" colSpan="2">
-                            <Link ><button>Edit</button></Link>
-                            <button >Delete</button>
+                        <th >Phone</th>
+                        <td>phone</td>
+                    </tr>
+                    <tr>
+                        <th >Place</th>
+                        <td>place</td>
+                    </tr>
+                    <tr>
+                        <td  colSpan={2} className='action' >
+                            <button><Link to={'/edit'}>Edit</Link></button>
+                        
+                            <button  >Delete</button>
                         </td>
                     </tr>
                 </tbody>

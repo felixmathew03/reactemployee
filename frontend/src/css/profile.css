@@ -1,7 +1,7 @@
 
 .body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Light background for contrast */
+    background-color: #eeeff0; /* Light background for contrast */
     height: 100vh; /* Full height */
     display: flex;
     justify-content: center;
@@ -11,46 +11,62 @@
 /* Main contents styles */
 .contents {
     width: 100%;
-    max-width: 500px; /* Max width for larger screens */
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     animation: fadeIn 0.8s ease-in-out;
+
 }
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+.content{
+    background-color: #e5e8ebf8;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    height: 60vh;
+}
 /* Image styles */
 .img {
     background: linear-gradient(135deg, #002b5c, #0056a6); /* Navy gradient */
-    padding: 20px;
-    text-align: center;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0 0 8px;
 }
 
 .img img {
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 90%;
+    height: 90%;
     object-fit: cover;
     border: 4px solid white; /* White border around the image */
 }
 
 /* Details styles */
 .details {
-    padding: 20px;
+    width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .table {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-collapse: collapse;
 }
 
 .table th, .table td {
-    padding: 12px;
     text-align: left;
 }
 
@@ -59,18 +75,17 @@
     color: white;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
+    padding-left: 2%;
 }
 
 .table td {
     background-color: #ffffff; /* White for data */
     color: #333; /* Darker grey for text */
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
-.actions {
-   display: flex;
-   justify-content: space-between;
-}
+
 
 /* Button styles */
 button {
@@ -81,8 +96,8 @@ button {
     padding: 10px 15px;
     cursor: pointer;
     transition: background 0.3s;
+    margin-right: 10%;
 }
-
 button:hover {
     background-color: #e0a800; /* Darker gold on hover */
 }
