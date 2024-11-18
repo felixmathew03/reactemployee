@@ -1,0 +1,56 @@
+import employSchema from './models/employ.model.js';
+export async function addEmp(req,res){
+    try{
+        const{...employ}=req.body;
+        const data=await employSchema.create({...employ});
+        return res.status(201).send({msg:data});
+    }catch(error){
+        res.status(404).send({msg:error})
+    }
+}
+export async function getEmployees(req,res) {
+    try {
+        console.log(req.user.userId);
+        const _id=req.user.userId;
+        const user=await userSchema.findOne({_id});
+        console.log(user);
+        if(!user)
+            return res.status(403).send({msg:"Unauthorized acces"});
+        const employees=await employSchema.find();
+        res.status(200).send({employees,username:user.username})
+        
+    } catch (error) {
+        res.status(404).send({msg:error})
+    }
+}
+
+export async function getEmploy(req,res) {
+    try {
+        console.log(req.params);
+        const {id}=req.params
+        const data=await employSchema.findOne({_id:id});
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+export async function editEmploy(req,res) {
+    try {
+        const {_id}=req.params;
+    const {...employ}=req.body;
+    const data=await employSchema.updateOne({_id},{$set:{...employ}});
+    res.status(201).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+    
+}
+export async function deleteEmploy(req,res) {
+    try {
+         const {_id}=req.params;
+        const data=await userSchema.deleteOne({_id})
+        res.status(201).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }   
+}
