@@ -1,14 +1,18 @@
-/* Reset default styles */
-body, h1, h2, h3, table {
-    margin: 0;
-    padding: 0;
+
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background for contrast */
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Main contents styles */
-.contentss {
+.contents {
     width: 100%;
     max-width: 500px; /* Max width for larger screens */
-    background: white;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -36,10 +40,12 @@ body, h1, h2, h3, table {
 /* Details styles */
 .details {
     padding: 20px;
+    height: 100%;
 }
 
 .table {
     width: 100%;
+    height: auto;
     border-collapse: collapse;
 }
 
@@ -62,7 +68,8 @@ body, h1, h2, h3, table {
 }
 
 .actions {
-    text-align: right;
+   display: flex;
+   justify-content: space-between;
 }
 
 /* Button styles */
@@ -85,8 +92,3 @@ a {
 }
 
 /* Responsive adjustments */
-@media (max-width: 500px) {
-    .contents {
-        width: 90%; /* Make content responsive on small screens */
-    }
-}
