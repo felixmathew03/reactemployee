@@ -26,7 +26,7 @@ const Home = () => {
     <div className="contentss" >
     {
         emp.map((employ)=>        <div className="contentt" key={employ._id}>
-        <Link to={'/profile'}>
+        <Link to={`/profile/${employ._id}`}>
             <div className="imgg">
                 <img src={employ.profile} alt=""/>
             </div>

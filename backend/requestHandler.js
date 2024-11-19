@@ -20,7 +20,6 @@ export async function getEmployees(req,res) {
 
 export async function getEmploy(req,res) {
     try {
-        console.log(req.params);
         const {id}=req.params
         const data=await employSchema.findOne({_id:id});
         res.status(200).send(data);
@@ -33,7 +32,7 @@ export async function editEmploy(req,res) {
         const {_id}=req.params;
     const {...employ}=req.body;
     const data=await employSchema.updateOne({_id},{$set:{...employ}});
-    res.status(201).send(data);
+    res.status(201).send({msg:"updated"});
     } catch (error) {
         res.status(404).send(error)
     }
@@ -42,8 +41,10 @@ export async function editEmploy(req,res) {
 export async function deleteEmploy(req,res) {
     try {
          const {_id}=req.params;
-        const data=await userSchema.deleteOne({_id})
-        res.status(201).send(data);
+         console.log(_id);
+         
+        const data=await employSchema.deleteOne({_id})
+        res.status(201).send({msg:"deleted"});
     } catch (error) {
         res.status(404).send(error)
     }   

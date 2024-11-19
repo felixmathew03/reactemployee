@@ -44,7 +44,7 @@ const AddE = () => {
             reject(error)
         }
     })
-}
+  }
   return (
     <div className="body">
     <div className="container">

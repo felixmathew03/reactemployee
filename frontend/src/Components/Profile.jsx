@@ -1,58 +1,77 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import "../css/profile.css"
+import { deleteEmploy } from '../../../backend/requestHandler'
 const Profile = () => {
+    const {id}=useParams();
+    // console.log(id);
+    const [employ,setEmploy]=useState({});
+    useEffect(()=>{
+        getEmploy();
+    },[])
+    const getEmploy=async()=>{
+        const res=await fetch(`http://localhost:3000/api/getemploy/${id}`);
+        const data=await res.json();
+        // console.log(data);
+        setEmploy({...data})
+    }
+    const deleteEmploy=async()=>{
+        const res=await fetch(`http://localhost:3000/api/deleteemploy/${id}`,{
+            method:"DELETE",
+            headers:{"Content-Type":"application/json"}
+          })
+        const data=await res.json();
+        console.log(data.msg);
+        setEmploy({})
+    }
   return (
     <div className="body">
     <div className="contentss" >
         <div className="content">
             <div className="img">
-                <img src="../img/pp.avif" alt=""/>
+                <img src={employ.profile} alt=""/>
             </div>
             <div className="details">
                 <table className="table">
                 <tbody>
                     <tr>
-                        <th>Emp-ID</th>
-                        <td>empid</td>
-                    </tr>
-                    <tr>
                         <th>Emp-Name</th>
-                        <td>name</td>
+                        <td>{employ.name}</td>
                     </tr>
                     <tr>
                         <th>DOB</th>
-                        <td>dob</td>
+                        <td>{employ.dob}</td>
                     </tr>
                     <tr>
                         <th>Salary</th>
-                        <td>salary</td>
+                        <td>Rs. {employ.salary}/-</td>
                     </tr>
                     <tr>
                         <th>Experience</th>
-                        <td>experience</td>
+                        <td>{employ.experience}</td>
                     </tr>
                     <tr>
                         <th>Designation</th>
-                        <td>designation</td>
+                        <td>{employ.designation}</td>
                     </tr>
                     <tr>
                         <th >Email</th>
-                        <td>email</td>
+                        <td>{employ.email}</td>
                     </tr>
                     <tr>
                         <th >Phone</th>
-                        <td>phone</td>
+                        <td>{employ.phone}</td>
                     </tr>
                     <tr>
                         <th >Place</th>
-                        <td>place</td>
+                        <td>{employ.place}</td>
                     </tr>
                     <tr>
                         <td  colSpan={2} className='action' >
-                            <button><Link to={'/edit'}>Edit</Link></button>
+                            <button><Link to={`/edit/${employ._id}`}>Edit</Link></button>
                         
-                            <button  >Delete</button>
+                            <button  onClick={deleteEmploy}>Delete</button>
                         </td>
                     </tr>
                 </tbody>
