@@ -59,12 +59,13 @@
 }
 
 .contentss{
-    width: 100%;
+    width: 98%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content:left;
     align-items: center;
-    
+    gap: 20px;
 }
 .contentss a{
     color: black;
@@ -96,6 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: antiquewhite;
 }
 .imgg img {
     width: 100%;

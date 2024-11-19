@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "../css/Home.css"
 const Home = () => {
+    const [emp,setEmp]=useState([]);
+    useEffect(()=>{
+        getEmployees();
+    },[])
+    const getEmployees=async()=>{
+        const res=await fetch("http://localhost:3000/api/getemployees")
+        const data=await res.json();
+        // console.log(data);
+        setEmp([...data])
+    }
   return (
     <>
     <div className="navbar">
@@ -14,50 +24,20 @@ const Home = () => {
       </div>
     </div>
     <div className="contentss" >
-        <div className="contentt">
-            <Link to={'/profile'}>
-                <div className="imgg">
-                    <img src="" alt=""/>
-                </div>
-                <div className="detailss">
-                    <h2>Name</h2>
-                    <h3>designation</h3>
-                </div>
-            </Link>
-        </div>
-        <div className="contentt">
-            <Link to={'/profile'}>
-                <div className="imgg">
-                    <img src="" alt=""/>
-                </div>
-                <div className="detailss">
-                    <h2>Name</h2>
-                    <h3>designation</h3>
-                </div>
-            </Link>
-        </div>
-        <div className="contentt">
-            <Link to={'/profile'}>
-                <div className="imgg">
-                    <img src="" alt=""/>
-                </div>
-                <div className="detailss">
-                    <h2>Name</h2>
-                    <h3>designation</h3>
-                </div>
-            </Link>
-        </div>
-        <div className="contentt">
-            <Link to={'/profile'}>
-                <div className="imgg">
-                    <img src="" alt=""/>
-                </div>
-                <div className="detailss">
-                    <h2>Name</h2>
-                    <h3>designation</h3>
-                </div>
-            </Link>
-        </div>
+    {
+        emp.map((employ)=>        <div className="contentt" key={employ._id}>
+        <Link to={'/profile'}>
+            <div className="imgg">
+                <img src={employ.profile} alt=""/>
+            </div>
+            <div className="detailss">
+                <h2>{employ.name}</h2>
+                <h3>{employ.designation}</h3>
+            </div>
+        </Link>
+    </div>)
+    }
+        
     </div>
     </>
   )

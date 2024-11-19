@@ -1,7 +1,7 @@
 import employSchema from './models/employ.model.js';
 export async function addEmp(req,res){
     try{
-        const{...employ}=req.body;
+        const {...employ}=req.body;
         const data=await employSchema.create({...employ});
         return res.status(201).send({msg:data});
     }catch(error){
@@ -10,14 +10,8 @@ export async function addEmp(req,res){
 }
 export async function getEmployees(req,res) {
     try {
-        console.log(req.user.userId);
-        const _id=req.user.userId;
-        const user=await userSchema.findOne({_id});
-        console.log(user);
-        if(!user)
-            return res.status(403).send({msg:"Unauthorized acces"});
         const employees=await employSchema.find();
-        res.status(200).send({employees,username:user.username})
+        res.status(200).send(employees)
         
     } catch (error) {
         res.status(404).send({msg:error})
