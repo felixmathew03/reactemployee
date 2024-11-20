@@ -3,9 +3,9 @@ export async function addEmp(req,res){
     try{
         const {...employ}=req.body;
         const data=await employSchema.create({...employ});
-        return res.status(201).send({msg:data});
+        return res.status(201).send({msg:"added"});
     }catch(error){
-        res.status(404).send({msg:error})
+        res.status(404).send({msg:"error"})
     }
 }
 export async function getEmployees(req,res) {
@@ -14,7 +14,7 @@ export async function getEmployees(req,res) {
         res.status(200).send(employees)
         
     } catch (error) {
-        res.status(404).send({msg:error})
+        res.status(404).send({msg:"error"})
     }
 }
 
@@ -24,7 +24,7 @@ export async function getEmploy(req,res) {
         const data=await employSchema.findOne({_id:id});
         res.status(200).send(data);
     } catch (error) {
-        res.status(404).send(error)
+        res.status(404).send({msg:"error"})
     }
 }
 export async function editEmploy(req,res) {
@@ -34,7 +34,7 @@ export async function editEmploy(req,res) {
     const data=await employSchema.updateOne({_id},{$set:{...employ}});
     res.status(201).send({msg:"updated"});
     } catch (error) {
-        res.status(404).send(error)
+        res.status(404).send({msg:"error"})
     }
     
 }
@@ -44,8 +44,8 @@ export async function deleteEmploy(req,res) {
          console.log(_id);
          
         const data=await employSchema.deleteOne({_id})
-        res.status(201).send({msg:"deleted"});
+        res.status(201).send({msg:"error"});
     } catch (error) {
-        res.status(404).send(error)
+        res.status(404).send({msg:"error"})
     }   
 }

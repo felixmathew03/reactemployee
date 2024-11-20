@@ -19,9 +19,9 @@ const AddE = () => {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(emp)
-    })
-    console.log(res);
-    
+    });
+    const result= await res.json();
+    alert(result.msg);
   }
   const handleChange=(e)=>{
     // console.log(e.target.value);

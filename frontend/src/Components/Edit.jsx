@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../css/Edit.css'
 const Edit = () => {
+  const navigate=useNavigate()
   const {id}=useParams();
     // console.log(id);
     const [employ,setEmploy]=useState({ })
@@ -36,7 +37,15 @@ const Edit = () => {
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(employ)
     })
-    console.log(res);
+    const result= await res.json();
+    if (res.status===201){
+      alert(result.msg);
+      setEmploy({});
+      navigate(`/profile/${id}`)
+  }else{
+      alert(result.msg)
+  }
+
     
   }
   function convertToBase64(file) {

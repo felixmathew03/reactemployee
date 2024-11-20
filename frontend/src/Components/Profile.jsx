@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import "../css/profile.css"
-import { deleteEmploy } from '../../../backend/requestHandler'
 const Profile = () => {
+    const navigate=useNavigate();
     const {id}=useParams();
     // console.log(id);
     const [employ,setEmploy]=useState({});
@@ -21,9 +21,16 @@ const Profile = () => {
             method:"DELETE",
             headers:{"Content-Type":"application/json"}
           })
-        const data=await res.json();
-        console.log(data.msg);
-        setEmploy({})
+        
+    const result= await res.json();
+    if (res.status===201){
+        setEmploy({});
+        alert(result.msg);
+        navigate('/')
+    }else{
+        alert(result.msg)
+    }
+
     }
   return (
     <div className="body">
